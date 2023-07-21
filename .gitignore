@@ -1,0 +1,21 @@
+# Node Modules
+node_modules/
+
+# Compiled output
+config/lib/
+client/*/lib/
+migrator/lib/
+server/lib/
+packages/*/lib/
+*/package-lock.json
+
+# Test
+**/coverage/
+.env
+
+# OS
+.DS_Store
+
+# IDE
+.idea
+.vscode

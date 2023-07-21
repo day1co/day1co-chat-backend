@@ -1,0 +1,44 @@
+{
+  "name": "@day1co/cereal-server",
+  "version": "0.1.0",
+  "description": "dedicated cms server by day1co/cms-api packages",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/day1co/cereal.git",
+    "directory": "server"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf ./lib ./node_modules ./package-lock.json",
+    "clean:build": "rimraf ./lib",
+    "lint": "eslint ./src",
+    "prebuild": "npm-run-all clean:build lint",
+    "prepublishOnly": "npm run build",
+    "pretest": "wait-on -v tcp:127.0.0.1:3306 tcp:127.0.0.1:6379",
+    "serve": "node ./lib/index",
+    "start": "npm run serve",
+    "config-mock": "node ../config/mock-server.js '../config/'",
+    "test": "jest --detectOpenHandles --forceExit --ci --silent --runInBand --logHeapUsage",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@day1co/cereal-chat": "file:../packages/chat",
+    "@day1co/pebbles": "^3.1.23",
+    "@fastify/multipart": "^7.7.1",
+    "@fastify/rate-limit": "^7.5.0",
+    "@fastify/sensible": "^5.1.1",
+    "@fastify/swagger": "^8.0.0",
+    "@fastify/swagger-ui": "^1.0.3",
+    "fastify": "^4.8.1",
+    "fastify-plugin": "^3.0.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.10",
+    "typeorm-naming-strategies": "^4.1.0"
+  },
+  "author": "Day1Company"
+}

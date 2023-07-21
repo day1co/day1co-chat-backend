@@ -1,0 +1,3 @@
+{
+  "extends": "@day1co/tsconfig/backend-mixed.json"
+}

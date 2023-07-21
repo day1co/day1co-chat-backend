@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["./src"],
+  "exclude": ["./lib", "./node_modules"]
+}

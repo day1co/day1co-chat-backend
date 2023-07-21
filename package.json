@@ -1,0 +1,50 @@
+{
+  "name": "day1co-cereal",
+  "private": true,
+  "workspaces": [
+    "config",
+    "migrator",
+    "packages/chat",
+    "client/*",
+    "server"
+  ],
+  "scripts": {
+    "start": "npm run serve",
+    "build": "npm run build --workspaces",
+    "watch": "tsc -b api/ server/ packages/* -w",
+    "serve": "npm start -w server",
+    "migrate": "npm run init -w migrator",
+    "clean": "npm-run-all clean:workspaces clean:root",
+    "clean:build": "npm run clean:build --workspaces",
+    "clean:root": "rimraf ./node_modules package-lock.json",
+    "clean:workspaces": "npm run clean --workspaces",
+    "lint": "npm run lint --workspaces",
+    "config-mock": "node ./config/mock-server.js './config/' &",
+    "test": "npm run test --workspaces"
+  },
+  "devDependencies": {
+    "@day1co/eslint-config": "^1.0.3",
+    "@day1co/prettier-config": "^1.0.0",
+    "@day1co/tsconfig": "^1.2.1",
+    "@tsconfig/node-lts": "^18.12.1",
+    "@types/jest": "^28.1.3",
+    "@types/node": "^18.0.0",
+    "@types/uuid": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^28.1.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.3",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.5",
+    "typescript": "^4.8.0",
+    "wait-on": "^6.0.1"
+  },
+  "dependencies": {
+    "qs": "~6.11.2"
+  }
+}

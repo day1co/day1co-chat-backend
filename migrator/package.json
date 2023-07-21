@@ -1,0 +1,37 @@
+{
+  "name": "@day1co/cereal-migrator",
+  "version": "0.1.0",
+  "description": "init schema script",
+  "main": "./lib/config/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/day1co/cereal.git",
+    "directory": "migrator"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf ./lib ./node_modules ./package-lock.json",
+    "clean:build": "rimraf ./lib",
+    "lint": "eslint ./src",
+    "prebuild": "npm-run-all clean:build lint",
+    "prepublishOnly": "npm run build",
+    "watch": "tsc -w",
+    "config-mock": "node ../config/mock-server.js '../config/'",
+    "init": "wait-on -v tcp:127.0.0.1:8888 && npm run migrate",
+    "test": "echo 'no test specified'",
+    "start": "npm run serve",
+    "serve": "echo no serve",
+    "migrate": "npm run build && typeorm -d lib migration:run",
+    "rollback": "npm run build && typeorm -d lib migration:revert",
+    "down": "typeorm -d migration migration:down",
+    "up": "typeorm migration:up"
+  },
+  "dependencies": {
+    "mysql2": "^2.3.3",
+    "typeorm": "^0.3.10"
+  },
+  "author": "Day1Company"
+}

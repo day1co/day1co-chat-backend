@@ -1,0 +1,36 @@
+{
+  "name": "@day1co/cereal-chat",
+  "version": "0.1.0",
+  "description": "Cereal - Chat Service",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/day1co/cereal.git",
+    "directory": "packages/chat"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf ./lib ./node_modules ./package-lock.json",
+    "clean:build": "rimraf ./lib",
+    "lint": "eslint ./src",
+    "prebuild": "npm-run-all clean:build lint",
+    "prepublishOnly": "npm run build",
+    "serve": "echo no serve",
+    "start": "npm run serve",
+    "config-mock": "node ../../config/mock-server.js '../../config/'",
+    "test": "jest --detectOpenHandles --forceExit --ci --silent --runInBand --logHeapUsage",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@day1co/pebbles": "^3.1.41",
+    "form-data": "^4.0.0",
+    "openai": "^3.2.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.10"
+  },
+  "author": "Day1Company"
+}
